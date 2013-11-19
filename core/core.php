@@ -7,13 +7,7 @@ if(!defined('WPSCAFF_DIRECTORY')) {
 
 function WPSCAFF_process_new_cpt( $singular, $plural ) {
 
-	$results = array();
-
-	// Get prefix for CPT's
-    $wpscaff_options = get_option('wpscaff_options');
-    $prefix = $wpscaff_options['cpt_prefix'];
-
-    $name = $prefix.$singular;
+    $name = $singular;
 
 	// Sanitize CPT Name
 	$name = strtolower($name); // No Capitals
@@ -25,14 +19,17 @@ function WPSCAFF_process_new_cpt( $singular, $plural ) {
 		return;
 
 	// Build our CPT from template
-	$custom_post_type = WPSCAFF_build_cpt( $name, $singular, $plural );
+	$custom_post_type = WPSCAFF_build_template( 'cpt-template', $name, $singular, $plural );
 
-	// Write our CPT to the CPT directory
-	$results[] = WPSCAFF_write_cpt( $name, $custom_post_type );
+	// Build our Controller from template
+	$controller = WPSCAFF_build_template( 'controller-template', $name, $singular, $plural );
 
-	// Create our controller and view
-	$results[] = WPSCAFF_write_templates( $name );
+	// Build our Views from template
+	$single = WPSCAFF_build_template( 'single-template', $name, $singular, $plural );
+	$archive = WPSCAFF_build_template( 'archive-template', $name, $singular, $plural );
 
+	// Write CPT, Controller, and Views to disk
+	$result = WPSCAFF_write_files( $name, $singular, $custom_post_type, $controller, $single, $archive );
 
 	// Flush rules so that our new CPT pages work without resaving permalinks
 	flush_rewrite_rules();
@@ -49,29 +46,24 @@ function WPSCAFF_check_duplicates( $name ) {
 
 }
 
-function WPSCAFF_build_cpt( $name, $singular, $plural ) {
+function WPSCAFF_build_template( $template, $name, $singular, $plural ) {
 
-	$template = file_get_contents(WPSCAFF_DIRECTORY . '/includes/cpt-template.php');
+	$template = file_get_contents(WPSCAFF_DIRECTORY . '/includes/'.$template.'.php');
 
-	// Format template for our new CPT
-	$formatted_cpt = sprintf( $template, $name, $singular, $plural );
+	$formatted_template = sprintf( $template, $name, $singular, $plural );
 
-	return $formatted_cpt;
-
-}
-
-function WPSCAFF_write_cpt( $name, $contents ) {
-
-	file_put_contents(FABRIC_CPT_DIR . $name . '.php', $contents);
+	return $formatted_template;
 
 }
 
-function WPSCAFF_write_templates( $name ) {
+function WPSCAFF_write_files( $name, $singular, $custom_post_type, $controller, $single, $archive ) {
 
-	file_put_contents(FABRIC_CONTROLLERS . $name . '.php', $contents);
+	file_put_contents(FABRIC_CPT_DIR . $name . '.php', $custom_post_type);
 
-	file_put_contents(FABRIC_VIEWS . 'single-' .$name . '.php', $contents);
-	file_put_contents(FABRIC_VIEWS . 'archive-' .$name . '.php', $contents);
+	file_put_contents(FABRIC_CONTROLLERS . 'Fabric' . $singular . 'Controller.php', $controller);
+
+	file_put_contents(FABRIC_VIEWS . 'single-' .$name . '.php', $single);
+	file_put_contents(FABRIC_VIEWS . 'archive-' .$name . '.php', $archive);
 
 }
 

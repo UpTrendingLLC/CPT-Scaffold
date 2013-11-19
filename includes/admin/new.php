@@ -8,7 +8,7 @@ if(!defined('WPSCAFF_DIRECTORY')) {
 function WPSCAFF_Render_New() {
 
     $show_message = false;
-    if($_POST['create-cpt']) {
+    if(isset($_POST['create-cpt'])) {
         $show_message = true;
     }
 
@@ -32,7 +32,8 @@ function WPSCAFF_Render_New() {
                         <label for="cpt_singular"><?php _e('Singular Name', 'WPSCAFF'); ?>:</label>
                     </th>
                     <td>
-                        <input type="text" name="cpt_singular" id="cpt_singular" placeholder="eg. Octopus" />
+                        <input type="text" name="cpt_singular" id="cpt_singular" placeholder="eg. 'Octopus'" />
+                        <p>Please use TitleCase, no spaces, no underscores!</p>
                     </td>
                 </tr>
                 <tr valign="top">
@@ -40,7 +41,8 @@ function WPSCAFF_Render_New() {
                         <label for="cpt_plural"><?php _e('Plural Name', 'WPSCAFF'); ?>:</label>
                     </th>
                     <td>
-                        <input type="text" name="cpt_plural" id="cpt_plural" placeholder="eg. Octopi" />
+                        <input type="text" name="cpt_plural" id="cpt_plural" placeholder="eg. 'Octopi'" />
+                        <p>Please use TitleCase, no spaces, no underscores!</p>
                     </td>
                 </tr>
             </tbody>

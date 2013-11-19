@@ -23,7 +23,6 @@ function WPSCAFF_render_admin_page() {
     <h2>CPT Scaffolding</h2>
     <h3 class="nav-tab-wrapper">
         <a href="?page=<?php echo $_REQUEST['page'];?>&render=new" class="nav-tab <?php if($admin_page == 'new'){echo 'nav-tab-active';} ?>"><?php _e('New CPT', 'WPSCAFF'); ?></a>
-        <a href="?page=<?php echo $_REQUEST['page'];?>&render=options" class="nav-tab <?php if($admin_page == 'options'){echo 'nav-tab-active';} ?>"><?php _e('Options', 'WPSCAFF'); ?></a>
     </h3>
 
     <?php
@@ -32,10 +31,6 @@ function WPSCAFF_render_admin_page() {
         case 'new':
             require_once(WPSCAFF_DIRECTORY . '/includes/admin/new.php');
             WPSCAFF_Render_New();
-            break;
-        case 'options':
-            require_once(WPSCAFF_DIRECTORY . '/includes/admin/options.php');
-            WPSCAFF_Render_Options();
             break;
     }
 
