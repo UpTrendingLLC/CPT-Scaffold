@@ -1,0 +1,20 @@
+#expanded_options_toggle, #expanded_options_toggle i {
+	font-size: 16px;
+	line-height: 32px;
+	cursor: pointer;
+}
+
+#expanded_options {
+	background: #ffffff;
+	border-radius: 8px;
+	padding: 0px 20px;
+	margin: 20px 20px 0 0;
+}
+
+#expanded_options .form-table {
+	display: none;
+}
+
+.form-table .description {
+	font-size: 10px;
+}

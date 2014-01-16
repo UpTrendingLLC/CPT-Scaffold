@@ -44,8 +44,7 @@ if ( !defined('WPSCAFF_PUBLIC_PATH') ){
 }
 
 //Load the actual plugin
-require 'core/init.php';
+require 'core/helper.php';
 require 'core/core.php';
 require 'core/admin.php';
 
-?>

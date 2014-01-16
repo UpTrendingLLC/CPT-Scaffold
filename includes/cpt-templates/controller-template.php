@@ -1,18 +1,13 @@
 <?php
 /**
  * =======================================
- * $%1$s Controller
+ * %1$s Controller
  * =======================================
  */
 
 namespace Fabric\Controllers;
 
-class Fabric%2$sController extends FabricBaseController
+class %1$sFabric extends BaseFabric
 {
-
-	public function __construct()
-	{
-
-	}
 
 }
