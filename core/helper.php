@@ -1,5 +1,75 @@
 <?php
 
+function WPSCAFF_check_requirements() {
+
+	$viewing_errors = false;
+	if( isset( $_GET['render'] ) && 'error' == $_GET['render'] )
+		$viewing_errors = true;
+
+	if ( !defined('FABRIC_VIEWS') || !defined('FABRIC_CPT_DIR') || !defined('FABRIC_TAX_DIR') || !defined('FABRIC_CONTROLLERS') ){
+		wp_redirect( admin_url( '/tools.php?page=wp-scaffolding&render=error&fabric=1' ) ); exit;
+	}
+
+	$errors = array();
+	$paths = array(
+		'views' 		=> FABRIC_VIEWS,
+		'posttypes'		=> FABRIC_CPT_DIR,
+		'taxonomy'		=> FABRIC_TAX_DIR,
+		'controllers' 	=> FABRIC_CONTROLLERS
+	);
+
+	foreach( $paths as $type => $path )
+	{
+		if( !is_dir( $path ) ) {
+			$errors[$type] = 1;
+			continue;
+		}
+
+		if( !is_writable( $path ) ) {
+			$errors[$type] = 2;
+		}
+	}
+
+	if( $viewing_errors ) {
+		$errors_changed = WPSCAFF_errors_changed( $_GET, $errors );
+	}
+
+	if(
+		( !empty( $errors ) && $viewing_errors && $errors_changed ) ||
+		( !empty( $errors ) && !$viewing_errors )
+	) {
+		$errors_string = http_build_query( $errors );
+		wp_redirect( admin_url( '/tools.php?page=wp-scaffolding&render=error&' . $errors_string ) ); exit;
+	}
+
+	if( $viewing_errors && empty( $errors ) ) {
+		wp_redirect( admin_url( '/tools.php?page=wp-scaffolding' ) ); exit;
+	}
+
+}
+add_action( 'load-tools_page_wp-scaffolding', 'WPSCAFF_check_requirements' );
+
+function WPSCAFF_errors_changed( $base_errors, $new_errors ) {
+
+	unset( $base_errors['page'] );
+	unset( $base_errors['render'] );
+	$changed = false;
+
+	foreach( $new_errors as $error => $value )
+	{
+		if( !isset( $base_errors[ $error ] ) || $base_errors[ $error ] != $value )
+			return true;
+
+		if( isset( $base_errors[ $error ] ) && $base_errors[ $error ] == $value )
+			unset( $base_errors[ $error ] );
+	}
+
+	if( !empty( $base_errors ) )
+		return true;
+
+	return $changed;
+}
+
 function WPSCAFF_sanatize_string( $string, $length_limit = 0 ) {
 
 	$string = strtolower($string); // No Capitals
@@ -90,3 +160,30 @@ function WPSCAFF_write_files( $name, $files_to_write ) {
 		}
 	}
 }
+
+function WPSCAFF_get_terms() {
+
+	$taxonomy 	= $_POST['tax'];
+	$nonce 		= $_POST['nonce'];
+
+	wp_verify_nonce( $nonce, 'wpscaff_new-ctrlr' );
+
+	$args = array(
+		'hide_empty' => false
+	);
+	$taxonomy_terms = get_terms( $taxonomy, $args ); 
+
+	$terms = array();
+	$x=0;
+	foreach( $taxonomy_terms as $term )
+	{
+		$terms[$x]['slug'] = $term->slug;
+		$terms[$x]['name'] = $term->name;
+		$x++;
+	}
+
+	echo json_encode( $terms );
+	exit;
+}
+add_action('wp_ajax_scaffolding_get_terms', 'WPSCAFF_get_terms');
+

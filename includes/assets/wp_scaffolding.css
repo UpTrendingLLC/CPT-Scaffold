@@ -5,7 +5,7 @@
 }
 
 #expanded_options {
-	background: #ffffff;
+	background: #dcdcdc;
 	border-radius: 8px;
 	padding: 0px 20px;
 	margin: 20px 20px 0 0;
@@ -17,4 +17,16 @@
 
 .form-table .description {
 	font-size: 10px;
+}
+
+#files_to_create {
+	display: none;
+	background: #ffdead;
+	border-radius: 8px;
+	padding: 5px 20px;
+	margin: 0 20px 0 0;
+}
+
+.taxonomy_tr, .taxonomy_term_tr {
+	display: none;
 }

@@ -158,6 +158,14 @@ function WPSCAFF_Render_CPT() {
 
         <br />
 
+        <div id="files_to_create" class="cpt">
+            <h4>The following files will be created:</h4>
+            <p class="posttype"><?php echo FABRIC_CPT_DIR; ?><span></span></p>
+            <p class="controller"><?php echo FABRIC_CONTROLLERS; ?><span></span></p>
+            <p class="single-view"><?php echo FABRIC_VIEWS; ?><span></span></p>
+            <p class="archive-view"><?php echo FABRIC_VIEWS; ?><span></span></p>
+        </div>
+
     <?php submit_button('Create Post Type', 'primary', false); ?>
     </form>
     <?php

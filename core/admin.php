@@ -23,6 +23,7 @@ function WPSCAFF_render_admin_page() {
     <h3 class="nav-tab-wrapper">
         <a href="?page=<?php echo $_REQUEST['page'];?>&render=cpt" class="nav-tab <?php if($admin_page == 'cpt'){echo 'nav-tab-active';} ?>"><?php _e('New Post Type', 'WPSCAFF'); ?></a>
         <a href="?page=<?php echo $_REQUEST['page'];?>&render=tax" class="nav-tab <?php if($admin_page == 'tax'){echo 'nav-tab-active';} ?>"><?php _e('New Taxonomy', 'WPSCAFF'); ?></a>
+        <a href="?page=<?php echo $_REQUEST['page'];?>&render=ctrlr" class="nav-tab <?php if($admin_page == 'ctrlr'){echo 'nav-tab-active';} ?>"><?php _e('New Custom Controller', 'WPSCAFF'); ?></a>
     </h3>
 
     <?php
@@ -36,6 +37,16 @@ function WPSCAFF_render_admin_page() {
         case 'tax':
             require_once(WPSCAFF_DIRECTORY . '/includes/admin/tax.php');
             WPSCAFF_Render_TAX();
+            break;
+
+        case 'ctrlr':
+            require_once(WPSCAFF_DIRECTORY . '/includes/admin/ctrlr.php');
+            WPSCAFF_Render_CTRLR();
+            break;
+
+        case 'error':
+            require_once(WPSCAFF_DIRECTORY . '/includes/admin/error.php');
+            WPSCAFF_Render_Error();
             break;
     }
 

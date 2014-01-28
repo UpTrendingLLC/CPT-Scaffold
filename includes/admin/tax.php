@@ -118,6 +118,11 @@ function WPSCAFF_Render_TAX() {
 
         <br />
 
+        <div id="files_to_create" class="tax">
+            <h4>The following file will be created:</h4>
+            <p class="taxonomy"><?php echo FABRIC_TAX_DIR; ?><span></span></p>
+        </div>
+
     <?php submit_button('Create Taxonomy', 'primary', false); ?>
     </form>
     <?php
