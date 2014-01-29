@@ -7,7 +7,7 @@
 
 namespace Fabric\Controllers;
 
-class Single%1$s extends Base
+class Single%1$s extends Single
 {
 
 	public function __construct()

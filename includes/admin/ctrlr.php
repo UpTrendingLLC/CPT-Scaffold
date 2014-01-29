@@ -43,13 +43,21 @@ function WPSCAFF_Render_CTRLR() {
                     </th>
                     <td>
                         <select name="ctrlr_type" id="ctrlr_type">
-                            <option value="pt">Post Type</option>
-                            <option value="tax">Taxonomy</option>
-                            <option value="slug">Post Slug</option>
+                            <option value="Page">Page Controller</option>
+                            <option value="Single">Single Controller</option>
+                            <option value="Archive">Archive Controller</option>
+                            <option value="Category">Category Controller</option>
+                            <option value="Taxonomy">Taxonomy Controller</option>
+                            <option value="Tag">Tag Controller</option>
+                            <option value="Search">Search Controller</option>
+                            <option value="Author">Author Controller</option>
+                            <option value="Error">Error (404) Controller</option>
+                            <option value="Attachment">Attachment Controller</option>
+                            <option value="Date">Date Controller</option>
+                            <option value="Comments">Comments Popup Controller</option>
+                            <option value="Paged">Paged Controller</option>
                         </select>
-                        <p class="description"><strong>Post Type:</strong> A built in or custom post type, optionally specify a post slug as well.</p>
-                        <p class="description"><strong>Taxonomy:</strong> A built in or custom taxonomy, optionall specify a term slug as well.</p>
-                        <p class="description"><strong>Post Slug:</strong> A page, post, or custom post, identified by its slug.</p>
+                        <p class="description">Select the primary controller type</p>
                     </td>
                 </tr>
                 <tr valign="top" class="posttype_tr">
