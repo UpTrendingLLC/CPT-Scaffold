@@ -143,7 +143,7 @@ function WPSCAFF_write_files( $name, $files_to_write ) {
 				break;
 
 			case 'cpt_controller':
-				$written = file_put_contents(FABRIC_CONTROLLERS . ucfirst($name) . 'Fabric.php', $template);
+				$written = file_put_contents(FABRIC_CONTROLLERS . 'Single' . ucfirst($name) . '.php', $template);
 				break;
 
 			case 'cpt_single':

@@ -37,6 +37,7 @@
 
 					$('.posttype_tr').show();
 					$('.slug_tr').show();
+					$('.slug_tr span.optional').show();
 
 					break;
 
@@ -58,6 +59,7 @@
 					$('.taxonomy_tr').hide();
 					$('.taxonomy_term_tr').hide();
 					$('.posttype_tr').hide();
+					$('.slug_tr span.optional').hide();
 
 					$('.slug_tr').show();
 
@@ -99,7 +101,7 @@
 
 			$('.taxonomy span').html( lowercase_name + '.php' );
 			$('.posttype span').html( lowercase_name + '.php' );
-			$('.controller span').html( ucfirst_name + 'Fabric.php' );
+			$('.controller span').html( 'Single' + ucfirst_name + '.php' );
 			$('.single-view span').html( 'single-' + lowercase_name + '.php' );
 			$('.archive-view span').html( 'archive-' + lowercase_name + '.php' );
 		}

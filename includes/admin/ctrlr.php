@@ -47,7 +47,9 @@ function WPSCAFF_Render_CTRLR() {
                             <option value="tax">Taxonomy</option>
                             <option value="slug">Post Slug</option>
                         </select>
-                        <p class="description">Which type of controller are you creating?</p>
+                        <p class="description"><strong>Post Type:</strong> A built in or custom post type, optionally specify a post slug as well.</p>
+                        <p class="description"><strong>Taxonomy:</strong> A built in or custom taxonomy, optionall specify a term slug as well.</p>
+                        <p class="description"><strong>Post Slug:</strong> A page, post, or custom post, identified by its slug.</p>
                     </td>
                 </tr>
                 <tr valign="top" class="posttype_tr">
@@ -78,7 +80,7 @@ function WPSCAFF_Render_CTRLR() {
                     </th>
                     <td>
                         <input type="text" name="slug" id="slug" placeholder="eg. 'about-us'" autocomplete="off" />
-                        <p class="description">Enter a page slug for your new controller</p>
+                        <p class="description"><span class="optional">Optional: </span>Enter a page slug for your new controller</p>
                     </td>
                 </tr>
                 <tr valign="top" class="taxonomy_tr">
