@@ -162,6 +162,7 @@ function WPSCAFF_Render_CPT() {
             <h4>The following files will be created:</h4>
             <p class="posttype"><?php echo FABRIC_CPT_DIR; ?><span></span></p>
             <p class="controller"><?php echo FABRIC_CONTROLLERS; ?><span></span></p>
+            <p class="archivecontroller"><?php echo FABRIC_CONTROLLERS; ?><span></span></p>
             <p class="single-view"><?php echo FABRIC_VIEWS; ?><span></span></p>
             <p class="archive-view"><?php echo FABRIC_VIEWS; ?><span></span></p>
         </div>

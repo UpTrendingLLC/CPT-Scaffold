@@ -71,20 +71,22 @@ function WPSCAFF_process_new_cpt( $singular, $plural, $public, $exclude_from_sea
     // Build our CPT from template
     $custom_post_type = WPSCAFF_build_template( 'cpt-template', array( $name, $singular, $plural, $public, $exclude_from_search, $show_ui, $show_in_nav_menus, $has_archive, $supports, $taxonomies, $rewrite_slug ), false );
 
-    // Build our Controller from template
-    $controller = WPSCAFF_build_template( 'controller-template', array( ucfirst($name), $singular, $plural ), false );
+    // Build our Single Controller from template
+    $single_controller = WPSCAFF_build_template( 'single-controller-template', array( ucfirst($name), $singular, $plural ), false );
 
     // Build our Views from template
     $single = WPSCAFF_build_template( 'single-template', array( $name, $singular, $plural ), false );
 
     if( 'true' == $has_archive ) {
+        $archive_controller = WPSCAFF_build_template( 'archive-controller-template', array( ucfirst($name), $singular, $plural ), false );
         $archive = WPSCAFF_build_template( 'archive-template', array( $name, $singular, $plural ), false );
     } else {
+        $archive_controller = false;
         $archive = false;
     }
 
     // Write CPT, Controller, and Views to disk
-    $result = WPSCAFF_write_files( $name, array( 'cpt' => $custom_post_type, 'cpt_controller' => $controller, 'cpt_single' => $single, 'cpt_archive' => $archive ) );
+    $result = WPSCAFF_write_files( $name, array( 'cpt' => $custom_post_type,  'cpt_single_controller' => $single_controller, 'cpt_single' => $single, 'cpt_archive_controller' => $archive_controller, 'cpt_archive' => $archive ) );
 
     return $result;
 }

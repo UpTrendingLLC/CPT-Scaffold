@@ -142,8 +142,12 @@ function WPSCAFF_write_files( $name, $files_to_write ) {
 				$written = file_put_contents(FABRIC_CPT_DIR . $name . '.php', $template);
 				break;
 
-			case 'cpt_controller':
+			case 'cpt_single_controller':
 				$written = file_put_contents(FABRIC_CONTROLLERS . 'Single' . ucfirst($name) . '.php', $template);
+				break;
+
+			case 'cpt_archive_controller':
+				$written = file_put_contents(FABRIC_CONTROLLERS . 'Archive' . ucfirst($name) . '.php', $template);
 				break;
 
 			case 'cpt_single':

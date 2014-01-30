@@ -13,8 +13,6 @@ class Single%1$s extends Single
 	public function __construct()
 	{
 		parent::__construct();
-
-		$this->show_sidebar = false;
 	}
 
 }
