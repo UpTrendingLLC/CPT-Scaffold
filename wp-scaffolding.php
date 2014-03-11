@@ -2,9 +2,9 @@
 /*
 Plugin Name: WP Scaffolding
 Plugin URI: http://UpTrending.com
-Description: Quick start for working with new CPT's and Taxonomies
+Description: Quick start for working with new CPT's and Taxonomies for the Fabric Theme Framework
 Author: Matt Keys
-Version: 1.0
+Version: 1.1
 Author URI: http://UpTrending.com
 */
 
