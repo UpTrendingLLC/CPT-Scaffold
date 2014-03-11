@@ -143,11 +143,11 @@ function WPSCAFF_write_files( $name, $files_to_write ) {
 				break;
 
 			case 'cpt_single_controller':
-				$written = file_put_contents(FABRIC_CONTROLLERS . 'Single' . ucfirst($name) . '.php', $template);
+				$written = file_put_contents(FABRIC_CONTROLLERS . 'class-single-' . $name . '.php', $template);
 				break;
 
 			case 'cpt_archive_controller':
-				$written = file_put_contents(FABRIC_CONTROLLERS . 'Archive' . ucfirst($name) . '.php', $template);
+				$written = file_put_contents(FABRIC_CONTROLLERS . 'class-archive-' . $name . '.php', $template);
 				break;
 
 			case 'cpt_single':
@@ -190,4 +190,3 @@ function WPSCAFF_get_terms() {
 	exit;
 }
 add_action('wp_ajax_scaffolding_get_terms', 'WPSCAFF_get_terms');
-

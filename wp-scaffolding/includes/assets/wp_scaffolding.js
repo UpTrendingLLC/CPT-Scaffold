@@ -32,18 +32,17 @@
 
 		function updatePreview( singular_name ) {
 
-			var lowercase_name = singular_name.toLowerCase()
-			var ucfirst_name = lowercase_name.charAt(0).toUpperCase() + lowercase_name.slice(1);
+			var name = singular_name.toLowerCase()
 			var archive = $('.archive-view').is(":checked");
 
 			$('#files_to_create').show();
 
-			$('.taxonomy span').html( lowercase_name + '.php' );
-			$('.posttype span').html( lowercase_name + '.php' );
-			$('.controller span').html( 'Single' + ucfirst_name + '.php' );
-			$('.archivecontroller span').html( 'Archive' + ucfirst_name + '.php' );
-			$('.single-view span').html( 'single-' + lowercase_name + '.php' );
-			$('.archive-view span').html( 'archive-' + lowercase_name + '.php' );
+			$('.taxonomy span').html( name + '.php' );
+			$('.posttype span').html( name + '.php' );
+			$('.controller span').html( 'class-single-' + name + '.php' );
+			$('.archivecontroller span').html( 'class-archive-' + name + '.php' );
+			$('.single-view span').html( 'single-' + name + '.php' );
+			$('.archive-view span').html( 'archive-' + name + '.php' );
 		}
 
 		function hidePreview() {
