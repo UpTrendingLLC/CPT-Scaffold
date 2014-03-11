@@ -27,7 +27,7 @@ class WP_Scaffolding_Update
         // vars
         $this->settings = array(
             'version'   =>  '',
-            'remote'    =>  'https://raw.github.com/UpTrendingLLC/WP-Scaffolding/master/wp-scaffolding-update-info.html',
+            'remote'    =>  'https://raw.github.com/UpTrendingLLC/WP-Scaffolding/master/wp-scaffolding/wp-scaffolding-update-info.html',
             'basename'  =>  plugin_basename( str_replace('-update.php', '.php', __FILE__) ),
             'slug'      =>  dirname( plugin_basename( str_replace('-update.php', '.php', __FILE__) ) )
         );
