@@ -1,8 +1,4 @@
 <?php
-/**
- * @package WP Scaffolding
- * @version 1.0
- */
 /*
 Plugin Name: WP Scaffolding
 Plugin URI: http://UpTrending.com
@@ -48,3 +44,6 @@ require 'core/helper.php';
 require 'core/core.php';
 require 'core/admin.php';
 
+if( is_admin() ) {
+    require_once 'wp-scaffolding-update.php';
+}

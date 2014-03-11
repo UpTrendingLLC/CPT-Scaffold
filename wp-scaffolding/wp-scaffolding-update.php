@@ -27,7 +27,7 @@ class WP_Scaffolding_Update
         // vars
         $this->settings = array(
             'version'   =>  '',
-            'remote'    =>  'https://raw.github.com/UpTrendingLLC/WP-Scaffolding/master/wp-scaffolding/wp-scaffolding-update-info.html',
+            'remote'    =>  'https://rawgithub.com/UpTrendingLLC/WP-Scaffolding/master/wp-scaffolding/wp-scaffolding-update-info.html',
             'basename'  =>  plugin_basename( str_replace('-update.php', '.php', __FILE__) ),
             'slug'      =>  dirname( plugin_basename( str_replace('-update.php', '.php', __FILE__) ) )
         );
@@ -53,11 +53,11 @@ class WP_Scaffolding_Update
         
         
         // Get the remote info
-        $request = wp_remote_post( $this->settings['remote'] );
+        $request = wp_remote_get( $this->settings['remote'] );
 
         if( !is_wp_error($request) || wp_remote_retrieve_response_code($request) === 200)
         {
-            $info = @unserialize($request['body']);
+            $info = @unserialize( $request['body'] );
             $info->slug = $this->settings['slug'];
         }
         
