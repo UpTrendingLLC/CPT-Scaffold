@@ -15,6 +15,9 @@ Install and activate the plugin. This plugin is meant to be used in a local dev 
 
 == Changelog ==
 
+= 1.1.1 =
+* Fixed bad class names in controller templates which were causing custom post types to produce a fatal warning
+
 = 1.1 =
 * Added ability for the plugin to update itself from the github repo where the code is hosted
 
@@ -22,6 +25,9 @@ Install and activate the plugin. This plugin is meant to be used in a local dev 
 * This is the first public release
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+Fixed bad class names in controller templates
 
 = 1.1 =
 Added ability for the plugin to update itself from the github repo where the code is hosted
