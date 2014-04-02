@@ -7,7 +7,7 @@
 
 namespace Fabric\Controllers;
 
-class Archive%1$s extends Archive
+class Archive_%1$s extends Archive
 {
 
 	public function __construct()
